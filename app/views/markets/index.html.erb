@@ -1,0 +1,35 @@
+<h1>Listing markets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lat</th>
+      <th>Lng</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Description</th>
+      <th>Website</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @markets.each do |market| %>
+      <tr>
+        <td><%= market.lat %></td>
+        <td><%= market.lng %></td>
+        <td><%= market.name %></td>
+        <td><%= market.address %></td>
+        <td><%= market.description %></td>
+        <td><%= market.website %></td>
+        <td><%= link_to 'Show', market %></td>
+        <td><%= link_to 'Edit', edit_market_path(market) %></td>
+        <td><%= link_to 'Destroy', market, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Market', new_market_path %>
