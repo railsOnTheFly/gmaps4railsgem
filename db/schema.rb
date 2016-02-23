@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20160223010305) do
 
   create_table "markets", force: true do |t|
-    t.float    "lat"
-    t.float    "lng"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "name"
     t.string   "address"
     t.text     "description"

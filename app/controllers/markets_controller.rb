@@ -5,6 +5,13 @@ class MarketsController < ApplicationController
   # GET /markets.json
   def index
     @markets = Market.all
+    @hash = Gmaps4rails.build_markers(@markets) do |market, marker|
+      marker.lat market.latitude
+      marker.lng market.longitude
+      marker.json({:name => market.name}) 
+      marker.infowindow market.description
+    end
+
   end
 
   # GET /markets/1
@@ -69,6 +76,6 @@ class MarketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def market_params
-      params.require(:market).permit(:lat, :lng, :name, :address, :description, :website)
+      params.require(:market).permit(:latitude, :longitude, :name, :address, :description, :website)
     end
 end
